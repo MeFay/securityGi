@@ -1,19 +1,17 @@
 package com.giexercise.security.controller;
 
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class SecureController {
-    @PreAuthorize("#username == authentication.principal.username")
-    public String getMyRoles(String username) {
-        //...
+    @RolesAllowed("ROLE_VIEWER")
+    public String getUsername2() {
         return null;
     }
-    @PostAuthorize("#username == authentication.principal.username")
-    public String getMyRoles2(String username) {
-        //...
-        return null;
+
+    @RolesAllowed({ "ROLE_VIEWER", "ROLE_EDITOR" })
+    public boolean isValidUsername2(String username) {
+        return isValidUsername2(username);
     }
 }
