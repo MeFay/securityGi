@@ -24,4 +24,5 @@ spring:
             client-name: articles-client-authorization-code
         provider:
           spring:
-            issuer-uri: http://auth-server:9000
+            main:
+              allow-bean-definition-overriding: true
